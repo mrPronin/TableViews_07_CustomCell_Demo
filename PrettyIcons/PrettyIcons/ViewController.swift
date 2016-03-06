@@ -113,20 +113,19 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
             cell.imageView?.image = nil
         } else {
             cell = tableView.dequeueReusableCellWithIdentifier("IconCell", forIndexPath: indexPath)
-            if let iconCell = cell as? IconTableViewCell {
-                let icon = set.icons[indexPath.row]
-                iconCell.titleLabel.text = icon.title
-                iconCell.subtitleLabel.text = icon.subtitle
-                if let iconImage = icon.image {
-                    iconCell.iconImageView.image = iconImage
-                } else {
-                    iconCell.iconImageView.image = nil
-                }
-                if icon.rating == .Awesome {
-                    iconCell.favoriteImageView.image = UIImage(named: "star_sel")
-                } else {
-                    iconCell.favoriteImageView.image = UIImage(named: "star_uns")
-                }
+            let iconCell = cell as! IconTableViewCell
+            let icon = set.icons[indexPath.row]
+            iconCell.titleLabel.text = icon.title
+            iconCell.subtitleLabel.text = icon.subtitle
+            if let iconImage = icon.image {
+                iconCell.iconImageView.image = iconImage
+            } else {
+                iconCell.iconImageView.image = nil
+            }
+            if icon.rating == .Awesome {
+                iconCell.favoriteImageView.image = UIImage(named: "star_sel")
+            } else {
+                iconCell.favoriteImageView.image = UIImage(named: "star_uns")
             }
         }
         
